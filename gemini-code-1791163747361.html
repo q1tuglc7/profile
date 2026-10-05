@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>私を表すランダム自己紹介</title>
+    <style>
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            background-color: #f5f5f7;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .card {
+            background: #ffffff;
+            padding: 40px 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+            max-width: 500px;
+            width: 100%;
+            text-align: center;
+        }
+        h1 {
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 30px;
+        }
+        .result-box {
+            background: #fafafa;
+            border: 2px dashed #ddd;
+            border-radius: 12px;
+            padding: 25px 15px;
+            margin-bottom: 30px;
+            min-height: 140px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 12px;
+        }
+        .phrase {
+            font-size: 1.1rem;
+            color: #333;
+            font-weight: bold;
+        }
+        .highlight {
+            color: #0071e3;
+            font-size: 1.3rem;
+        }
+        button {
+            background-color: #0071e3;
+            color: white;
+            border: none;
+            padding: 16px 32px;
+            font-size: 1rem;
+            font-weight: bold;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: transform 0.1s, background-color 0.2s;
+            box-shadow: 0 4px 12px rgba(0, 113, 227, 0.3);
+        }
+        button:hover {
+            background-color: #005bb5;
+        }
+        button:active {
+            transform: scale(0.96);
+        }
+    </style>
+</head>
+<body>
+
+<div class="card">
+    <h1>🛍️ 紙袋から引く自己紹介</h1>
+    
+    <div class="result-box" id="result">
+        <p style="color: #999; margin: 0;">「紙袋から引く」ボタンを押すと<br>ランダムで言葉が組み合わされます！</p>
+    </div>
+
+    <button onclick="generate()">紙袋から引く！</button>
+</div>
+
+<script>
+    // ★★★ ここに友達からもらったフレーズを打ち込んでください ★★★
+    
+    // 【A】一見○○に見えて
+    const partA = [
+        "おとなしそうに見えて",
+        "しっかり者に見えて",
+        "クールに見えて",
+        "インドア派に見えて"
+    ];
+
+    // 【B】実は○○な
+    const partB = [
+        "めちゃくちゃ行動派な",
+        "こだわりが強い",
+        "フットワークが軽すぎる",
+        "熱いハートを持っている"
+    ];
+
+    // 【C】○○（名詞）
+    const partC = [
+        "アイデアマン",
+        "探求者",
+        "お祭り男/女",
+        "チャレンジャー"
+    ];
+
+    // ★★★ 打ち込みここまで ★★★
+
+    function getRandomItem(array) {
+        return array[Math.floor(Math.random() * array.length)];
+    }
+
+    function generate() {
+        const a = getRandomItem(partA);
+        const b = getRandomItem(partB);
+        const c = getRandomItem(partC);
+
+        const resultDiv = document.getElementById('result');
+        resultDiv.innerHTML = `
+            <div class="phrase">一見、<span class="highlight">「${a}」</span></div>
+            <div class="phrase">実は、<span class="highlight">「${b}」</span></div>
+            <div class="phrase">私は<span class="highlight">「${c}」</span>です！</div>
+        `;
+    }
+</script>
+
+</body>
+</html>
